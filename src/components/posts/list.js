@@ -1,20 +1,15 @@
 import React from "react";
+import { Post } from "./post";
 
 export const List = ({ posts }) => (
   <div className="panel panel-default">
-    <div className="panel-heading">Panel heading</div>
+    <div className="panel-heading">Posts</div>
     <div className="panel-body">
-      <p>All the posts from json placeholder</p>
+      <ul className="list-group">
+        {posts.map(({ id, title }) => {
+          return <Post key={id} id={id} title={title} />;
+        })}
+      </ul>
     </div>
-
-    <ul className="list-group">
-      {posts.map(({ id, title }) => {
-        return (
-          <li className="list-group-item" key={id}>
-            {title}
-          </li>
-        );
-      })}
-    </ul>
   </div>
 );
