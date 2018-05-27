@@ -8,6 +8,6 @@ export const currentPostSelector = createSelector(
   currentIdSelector,
   (posts, currentId) => {
     if (currentId === -1) return null;
-    return posts.find(post => post.id === currentId) || null;
+    return posts[currentId] || null;
   }
 );

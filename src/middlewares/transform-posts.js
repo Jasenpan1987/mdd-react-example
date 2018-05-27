@@ -1,3 +1,4 @@
+import { normalize } from "normalizr";
 import { TRANSFORM_POSTS } from "../components/posts";
 
 export const transformPostsMiddleware = ({
@@ -9,7 +10,7 @@ export const transformPostsMiddleware = ({
   }
 
   // { data, transformed}
-  const { posts, success } = action.payload;
+  const { posts, success, schema } = action.payload;
   const newPosts = posts.map(({ id, userId, title, body }) => {
     return {
       id,
@@ -19,5 +20,5 @@ export const transformPostsMiddleware = ({
     };
   });
 
-  dispatch(success(newPosts));
+  dispatch(success(normalize(newPosts, schema)));
 };

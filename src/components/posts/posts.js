@@ -24,7 +24,7 @@ class PostsComponent extends Component {
 }
 
 const mapStateToProps = state => ({
-  posts: state.posts
+  posts: Object.keys(state.posts).map(id => state.posts[id])
 });
 
 const mapDispatchToProps = dispatch => ({

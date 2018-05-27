@@ -1,8 +1,9 @@
 import { SELECT_POST } from "./actions";
+import { handleActions } from "redux-actions";
 
-export const currentPostReducer = (state = -1, action) => {
-  if (action.type === SELECT_POST) {
-    return action.payload;
-  }
-  return state;
-};
+export const currentPostReducer = handleActions(
+  {
+    SELECT_POST: (state, { payload }) => payload
+  },
+  -1
+);

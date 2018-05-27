@@ -4,6 +4,7 @@ import { startLoading, endLoading } from "../components/ui";
 const identity = () => ({ type: "NOT_DEFINED_TYPE" });
 
 export const api = ({ dispatch, getState }) => next => async action => {
+  console.log("action:: ", action);
   if (action.type !== API) {
     return next(action);
   }
